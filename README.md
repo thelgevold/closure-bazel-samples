@@ -3,3 +3,5 @@ This sample project shows how to build a JavaScript application using the Closur
 To run the application run: `npm start`
 
 This will start up a node server and serve a closure compiled application from http://localhost:7002.
+
+Blog post: https://www.syntaxsuccess.com/viewarticle/using-the-closure-compiler-with-bazel
