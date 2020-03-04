@@ -1,0 +1,16 @@
+load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_binary", "closure_js_library")
+
+closure_js_library(
+    name = "main_lib",
+    srcs = ["main.js"],
+    suppress = ["JSC_MISSING_JSDOC"],
+    no_closure_library = True,
+    deps = ["//src/greetings"]
+)
+
+closure_js_binary(
+    name = "app",
+    suppress = ["JSC_MISSING_JSDOC"],
+    compilation_level = "WHITESPACE_ONLY",
+    deps = [":main_lib"]
+)

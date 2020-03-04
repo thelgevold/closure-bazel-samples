@@ -1,0 +1,14 @@
+{
+  "devDependencies": {
+    "@bazel/bazel": "2.1.0",
+    "@bazel/ibazel": "0.12.2"
+  },
+  "dependencies": {
+    "compression": "1.7.4",
+    "express": "4.16.4",
+    "bootstrap": "4.4.1"
+  },
+  "scripts": {
+    "start": "ibazel run //src/server"
+  }
+}

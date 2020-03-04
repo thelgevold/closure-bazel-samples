@@ -1,0 +1,19 @@
+load("@io_bazel_rules_closure//closure:defs.bzl", "closure_js_library", "closure_js_binary")
+package(default_visibility = ["//visibility:public"])
+
+closure_js_library(
+    name = "greetings",
+    srcs = ["greeting-service.js", 
+            "greeting-component.js",
+            "greeting.js"
+    ],
+    no_closure_library = True,
+    suppress = ["moduleLoad", "JSC_UNKNOWN_EXPR_TYPE"]
+)
+
+closure_js_binary(
+    name = "my_app",
+    entry_points = ["src/client/greetings/greeting-component.js"],
+    compilation_level= "ADVANCED",
+    deps = [":greetings"],
+)

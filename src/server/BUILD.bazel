@@ -1,0 +1,27 @@
+load("@build_bazel_rules_nodejs//:index.bzl", "nodejs_binary")
+
+genrule(
+    name = "greeting_bundle",
+    srcs = ["//src/client/greetings:my_app.js"],
+    outs = ["greetings.min.js"],
+    cmd = "cp $< $@",
+)
+
+genrule(
+    name = "bootstrap",
+    srcs = ["@npm//:node_modules/bootstrap/dist/css/bootstrap.min.css"],
+    outs = ["bootstrap.min.css"],
+    cmd = "cp $< $@",
+)
+
+nodejs_binary(
+    name = "server",
+    data = [
+         "@npm//express",
+         "@npm//compression",
+         ":index.html",
+         ":greeting_bundle",
+         ":bootstrap"
+    ],
+    entry_point = "server.js",
+)
